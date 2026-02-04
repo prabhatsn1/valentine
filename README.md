@@ -29,6 +29,27 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
+## Google Analytics (GA4) setup
+
+This project includes a small GA4 integration that sends custom click events for the Yes/No buttons.
+
+Steps to enable:
+
+1. Create a GA4 property and copy the Measurement ID (looks like G-XXXXXXXXXX).
+2. Set the ID in Vercel as an environment variable named `NEXT_PUBLIC_GA_ID` or locally in `.env.local`:
+
+```env
+# .env.local
+NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
+```
+
+3. Deploy to Vercel or run locally (`npm run dev`) — the layout injects `gtag.js` and the page sends events via `lib/gtag.js`.
+
+Notes:
+
+- Events are sent using `window.gtag('event', ...)`. If you want to track additional fields add calls to `lib/gtag.js`.
+- For privacy-sensitive sites consider using server-side forwarding or a privacy-first provider.
+
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.

@@ -5,6 +5,7 @@ import yes from "/public/images/yes.gif";
 import no from "/public/images/no.gif";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { event as gtagEvent } from "../lib/gtag";
 
 export default function Home() {
   const answers = [
@@ -30,15 +31,27 @@ export default function Home() {
   const [isYes, setIsYes] = useState(false);
 
   const total = answers.length;
-  const sizes = [25, 30, 45, 40, 50];
+  const sizes = [25, 30, 45, 40, 50, 75, 85, 100];
   const emoji = "🥰";
 
   const onNoClicks = () => {
     const randomSize = Math.floor(Math.random() * sizes.length);
-    setCount(count + 1);
+    const newCount = count + 1;
+    setCount(newCount);
     setSize(size + sizes[randomSize]);
     setImage(no);
     setAnswers(answers[count]);
+    // send GA event
+    try {
+      gtagEvent({
+        action: "no_click",
+        category: "engagement",
+        label: `no_button_${newCount}`,
+        value: newCount,
+      });
+    } catch (e) {
+      // ignore if gtag not available
+    }
     if (count === total - 1) {
       setSize(50);
       setCount(0);
@@ -48,7 +61,13 @@ export default function Home() {
   const onYesClicks = () => {
     setImage(yes);
     setIsYes(true);
-    console.log("Yes clicks");
+    try {
+      gtagEvent({
+        action: "yes_click",
+        category: "engagement",
+        label: "yes_button",
+      });
+    } catch (e) {}
   };
 
   return (
