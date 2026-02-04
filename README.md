@@ -50,6 +50,16 @@ Notes:
 - Events are sent using `window.gtag('event', ...)`. If you want to track additional fields add calls to `lib/gtag.js`.
 - For privacy-sensitive sites consider using server-side forwarding or a privacy-first provider.
 
+## Node version
+
+This project is configured to use Node 24. There are three ways to make your environment use Node 24:
+
+- The `engines` field in `package.json` requests Node 24.x (Vercel respects this during builds).
+- Use nvm: the repository includes an `.nvmrc` file containing `24`.
+- Use any tool that reads `.node-version` (file included) to pin the runtime.
+
+If you need to run a different Node version locally, update `.nvmrc` or the `engines` field accordingly.
+
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
