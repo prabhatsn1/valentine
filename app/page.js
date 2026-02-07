@@ -198,7 +198,7 @@ export default function Home() {
             zIndex: 1,
           }}
         >
-          <Grid item mb={3}>
+          <Grid item mb={3} sx={{ px: { xs: 2, sm: 3 } }}>
             <Typography
               variant="h4"
               sx={{
@@ -207,9 +207,10 @@ export default function Home() {
                 WebkitBackgroundClip: "text",
                 color: "transparent",
                 fontWeight: "bold",
-                letterSpacing: 2,
+                letterSpacing: { xs: 1, sm: 2 },
                 textAlign: "center",
                 mb: 2,
+                fontSize: { xs: "1.5rem", sm: "1.75rem", md: "2.125rem" },
               }}
             >
               To the doctor who stole my heart, Dr Dhriti Ghosh,
@@ -221,6 +222,7 @@ export default function Home() {
                 fontWeight: "500",
                 textAlign: "center",
                 mb: 3,
+                fontSize: { xs: "1rem", sm: "1.25rem", md: "1.5rem" },
               }}
             >
               My heart belongs to you, always{" "}
@@ -228,19 +230,25 @@ export default function Home() {
             </Typography>
           </Grid>
 
-          <Grid item mb={4}>
+          <Grid item mb={4} sx={{ width: "90%", maxWidth: "350px", px: 2 }}>
             <Box
               sx={{
                 position: "relative",
                 animation: isYes ? "heartbeat 1s ease-in-out infinite" : "none",
+                width: "100%",
+                aspectRatio: "1 / 1",
+                minHeight: { xs: "250px", sm: "300px" },
               }}
             >
               <Image
-                width={300}
-                height={300}
+                width={350}
+                height={350}
                 src={showImage}
                 alt="image"
                 style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "contain",
                   borderRadius: "20px",
                   boxShadow: isYes
                     ? "0 0 40px rgba(220, 20, 60, 0.8)"
@@ -269,16 +277,19 @@ export default function Home() {
                   fontWeight: "bold",
                   textAlign: "center",
                   animation: "heartbeat 1s ease-in-out infinite",
+                  fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" },
+                  px: 2,
                 }}
               >
                 Yepppie, see you sooonnn Babes {emoji}
               </Typography>
               <Typography
                 sx={{
-                  fontSize: "1.5rem",
+                  fontSize: { xs: "0.95rem", sm: "1.15rem", md: "1.5rem" },
                   color: "#666",
                   textAlign: "center",
                   fontStyle: "italic",
+                  px: 2,
                 }}
               >
                 Now let me take your vitals... with my heart 💕
@@ -297,16 +308,20 @@ export default function Home() {
                   sx={{
                     background: "linear-gradient(135deg, #ff1493, #dc143c)",
                     color: "white",
-                    padding: "6px 16px",
-                    fontSize: "0.75rem",
+                    padding: { xs: "8px 16px", sm: "10px 20px" },
+                    fontSize: { xs: "0.75rem", sm: "0.875rem" },
                     fontWeight: "bold",
                     borderRadius: "25px",
                     boxShadow: "0 8px 20px rgba(220, 20, 60, 0.4)",
                     transition: "all 0.3s ease",
+                    textTransform: "none",
                     "&:hover": {
                       boxShadow: "0 12px 30px rgba(220, 20, 60, 0.6)",
                       transform: "scale(1.05)",
                       filter: "brightness(1.1)",
+                    },
+                    "&:active": {
+                      transform: "scale(0.98)",
                     },
                   }}
                 >
@@ -322,6 +337,7 @@ export default function Home() {
               sx={{
                 alignItems: "center",
                 justifyContent: "center",
+                px: 2,
               }}
             >
               <Grid item>
@@ -329,15 +345,15 @@ export default function Home() {
                   onClick={onYesClicks}
                   className="yes-button-animated"
                   sx={{
-                    width: size,
-                    height: size,
+                    width: { xs: Math.max(size * 0.7, 50), sm: size },
+                    height: { xs: Math.max(size * 0.7, 50), sm: size },
                     background: "linear-gradient(135deg, #ff1493, #dc143c)",
                     cursor: "pointer",
                     transition: "all 0.3s ease",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    fontSize: "1.2rem",
+                    fontSize: { xs: "0.9rem", sm: "1.2rem" },
                     fontWeight: "bold",
                     color: "white",
                     clipPath:
@@ -348,26 +364,34 @@ export default function Home() {
                       transform: "scale(1.05)",
                       filter: "brightness(1.1)",
                     },
+                    "&:active": {
+                      transform: "scale(0.98)",
+                    },
                   }}
                 >
                   Yes
                 </Box>
               </Grid>
-              <Grid item>
+              <Grid item xs="auto">
                 <Button
                   variant="contained"
                   onClick={onNoClicks}
                   color="error"
-                  size="small"
                   sx={{
                     borderRadius: "20px",
-                    padding: "10px 20px",
+                    padding: { xs: "8px 16px", sm: "10px 20px" },
                     fontWeight: "600",
+                    fontSize: { xs: "0.85rem", sm: "1rem" },
                     background: "linear-gradient(135deg, #ff6b6b, #ff5252)",
                     transition: "all 0.3s ease",
+                    minWidth: { xs: "80px", sm: "100px" },
+                    textTransform: "none",
                     "&:hover": {
                       transform: "translateX(-10px)",
                       boxShadow: "0 5px 15px rgba(255, 0, 0, 0.4)",
+                    },
+                    "&:active": {
+                      transform: "scale(0.95) translateX(-5px)",
                     },
                   }}
                 >

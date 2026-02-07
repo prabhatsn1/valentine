@@ -122,7 +122,7 @@ export default function Gallery() {
     >
       <style>{styles}</style>
 
-      <Container maxWidth="md">
+      <Container maxWidth="md" sx={{ px: { xs: 1, sm: 2 } }}>
         {/* Header */}
         <Typography
           variant="h3"
@@ -132,7 +132,7 @@ export default function Gallery() {
             color: "#dc143c",
             fontWeight: "bold",
             mb: 6,
-            fontSize: { xs: "h4.fontSize", sm: "h3.fontSize" },
+            fontSize: { xs: "1.75rem", sm: "2.25rem", md: "2.5rem" },
           }}
         >
           ✨ Photo Gallery ✨
@@ -147,8 +147,9 @@ export default function Gallery() {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            gap: 2,
+            gap: { xs: 1, sm: 2 },
             mb: 4,
+            flexDirection: { xs: "column", sm: "row" },
           }}
         >
           {/* Previous Button */}
@@ -159,20 +160,24 @@ export default function Gallery() {
               color: "#dc143c",
               borderRadius: "50%",
               border: "2px solid #dc143c",
+              p: { xs: 1.5, sm: 2 },
               "&:hover": {
                 backgroundColor: "rgba(220, 20, 60, 0.1)",
               },
+              "&:active": {
+                transform: "scale(0.95)",
+              },
             }}
           >
-            <ChevronLeftIcon sx={{ fontSize: 32 }} />
+            <ChevronLeftIcon sx={{ fontSize: { xs: 24, sm: 32 } }} />
           </IconButton>
 
           {/* Main Image Display */}
           <Box
             sx={{
               position: "relative",
-              width: { xs: "250px", sm: "350px", md: "450px" },
-              height: { xs: "25vw", sm: "30vw", md: "350px" },
+              width: { xs: "280px", sm: "350px", md: "450px" },
+              height: { xs: "280px", sm: "350px", md: "450px" },
               maxHeight: "450px",
             }}
           >
@@ -196,12 +201,16 @@ export default function Gallery() {
               color: "#dc143c",
               borderRadius: "50%",
               border: "2px solid #dc143c",
+              p: { xs: 1.5, sm: 2 },
               "&:hover": {
                 backgroundColor: "rgba(220, 20, 60, 0.1)",
               },
+              "&:active": {
+                transform: "scale(0.95)",
+              },
             }}
           >
-            <ChevronRightIcon sx={{ fontSize: 32 }} />
+            <ChevronRightIcon sx={{ fontSize: { xs: 24, sm: 32 } }} />
           </IconButton>
         </Box>
 
@@ -210,8 +219,9 @@ export default function Gallery() {
           sx={{
             display: "flex",
             justifyContent: "center",
-            gap: 1.5,
+            gap: { xs: 1, sm: 1.5 },
             mb: 6,
+            flexWrap: "wrap",
           }}
         >
           {photos.map((_, index) => (
@@ -221,6 +231,10 @@ export default function Gallery() {
               onClick={() => goToIndex(index)}
               sx={{
                 backgroundColor: index === currentIndex ? "#dc143c" : "#cccccc",
+                cursor: "pointer",
+                "&:active": {
+                  transform: "scale(0.8)",
+                },
               }}
             />
           ))}
@@ -233,13 +247,14 @@ export default function Gallery() {
             textAlign: "center",
             color: "#666",
             mb: 4,
+            fontSize: { xs: "0.875rem", sm: "1rem" },
           }}
         >
           {currentIndex + 1} / {photos.length}
         </Typography>
 
         {/* Back Button */}
-        <Box sx={{ display: "flex", justifyContent: "center" }}>
+        <Box sx={{ display: "flex", justifyContent: "center", px: 2 }}>
           <Button
             href="/"
             variant="outlined"
@@ -247,12 +262,15 @@ export default function Gallery() {
               color: "#dc143c",
               borderColor: "#dc143c",
               textTransform: "none",
-              fontSize: "1rem",
-              px: 3,
-              py: 1,
+              fontSize: { xs: "0.9rem", sm: "1rem" },
+              px: { xs: 2, sm: 3 },
+              py: { xs: 1, sm: 1.2 },
               "&:hover": {
                 backgroundColor: "rgba(220, 20, 60, 0.1)",
                 borderColor: "#dc143c",
+              },
+              "&:active": {
+                transform: "scale(0.98)",
               },
             }}
           >
