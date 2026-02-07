@@ -4,6 +4,7 @@ import mid from "../public/images/mid.gif";
 import yes from "/public/images/yes.gif";
 import no from "/public/images/no.gif";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { event as gtagEvent } from "../lib/gtag";
 
@@ -211,7 +212,7 @@ export default function Home() {
                 mb: 2,
               }}
             >
-              Dear Dr Dhriti Ghosh,
+              To the doctor who stole my heart, Dr Dhriti Ghosh,
             </Typography>
             <Typography
               variant="h5"
@@ -222,7 +223,7 @@ export default function Home() {
                 mb: 3,
               }}
             >
-              You heal my heart every single day{" "}
+              My heart belongs to you, always{" "}
               <span className="stethoscope-icon">🩺</span>
             </Typography>
           </Grid>
@@ -256,7 +257,6 @@ export default function Home() {
               sx={{
                 alignItems: "center",
                 justifyContent: "center",
-                animation: "float 3s ease-in-out infinite",
               }}
             >
               <Typography
@@ -291,6 +291,28 @@ export default function Home() {
               >
                 💉 🩺 💊
               </Box>
+              <Link href="/gallery" style={{ textDecoration: "none" }}>
+                <Button
+                  variant="contained"
+                  sx={{
+                    background: "linear-gradient(135deg, #ff1493, #dc143c)",
+                    color: "white",
+                    padding: "6px 16px",
+                    fontSize: "0.75rem",
+                    fontWeight: "bold",
+                    borderRadius: "25px",
+                    boxShadow: "0 8px 20px rgba(220, 20, 60, 0.4)",
+                    transition: "all 0.3s ease",
+                    "&:hover": {
+                      boxShadow: "0 12px 30px rgba(220, 20, 60, 0.6)",
+                      transform: "scale(1.05)",
+                      filter: "brightness(1.1)",
+                    },
+                  }}
+                >
+                  Little Surprise 🎞️
+                </Button>
+              </Link>
             </Stack>
           ) : (
             <Grid
